@@ -21,10 +21,7 @@ class RoomServiceTest {
 
     @Test
     void save() {
-        Room room = Room.builder()
-                .classNumber("125")
-                .capacity(45)
-                .build();
+        Room room = createRoom();
         roomService.save(room);
 
         Room roomById = roomService.getById(room.getId());
@@ -35,10 +32,7 @@ class RoomServiceTest {
 
     @Test
     void delete() {
-        Room room = Room.builder()
-                .classNumber("125")
-                .capacity(45)
-                .build();
+        Room room = createRoom();
         roomService.save(room);
 
         roomService.delete(room.getId());
@@ -48,10 +42,7 @@ class RoomServiceTest {
 
     @Test
     void update() {
-        Room room = Room.builder()
-                .classNumber("125")
-                .capacity(45)
-                .build();
+        Room room = createRoom();
         roomService.save(room);
 
         Room updatedRoom = Room.builder()
@@ -68,10 +59,7 @@ class RoomServiceTest {
 
     @Test
     void getAllRooms() {
-        Room room1 = Room.builder()
-                .classNumber("125")
-                .capacity(45)
-                .build();
+        Room room1 = createRoom();
         roomService.save(room1);
 
         Room room2 = Room.builder()
@@ -84,5 +72,12 @@ class RoomServiceTest {
 
         assertNotNull(allRooms);
         assertEquals(2, allRooms.size());
+    }
+
+    private Room createRoom() {
+        return Room.builder()
+                .classNumber("125")
+                .capacity(45)
+                .build();
     }
 }

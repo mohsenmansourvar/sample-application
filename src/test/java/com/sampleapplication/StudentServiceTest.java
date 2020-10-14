@@ -64,14 +64,7 @@ class StudentServiceTest {
 
     @Test
     void delete() {
-        Student student = Student.builder()
-                .firstName("Mohsen")
-                .lastName("Mansouri")
-                .nationalCode("0000000000")
-                .address("Tehran")
-                .telephone("000")
-                .studentNumber("321")
-                .build();
+        Student student = createStudent();
         studentService.save(student);
 
         studentService.delete(student.getId());
@@ -81,14 +74,7 @@ class StudentServiceTest {
 
     @Test
     void getById() {
-        Student student = Student.builder()
-                .firstName("Mohsen")
-                .lastName("Mansouri")
-                .nationalCode("0000000000")
-                .address("Tehran")
-                .telephone("000")
-                .studentNumber("321")
-                .build();
+        Student student = createStudent();
         studentService.save(student);
 
         Student studentById = studentService.getById(student.getId());
@@ -104,14 +90,7 @@ class StudentServiceTest {
 
     @Test
     void update() {
-        Student student = Student.builder()
-                .firstName("Mohsen")
-                .lastName("Mansouri")
-                .nationalCode("0000000000")
-                .address("Tehran")
-                .telephone("000")
-                .studentNumber("321")
-                .build();
+        Student student = createStudent();
         studentService.save(student);
 
         Student updatedStudent = Student.builder()
@@ -134,14 +113,7 @@ class StudentServiceTest {
 
     @Test
     void getAllStudents() {
-        Student student1 = Student.builder()
-                .firstName("Mohsen")
-                .lastName("Mansouri")
-                .nationalCode("0000000000")
-                .address("Tehran")
-                .telephone("000")
-                .studentNumber("321")
-                .build();
+        Student student1 = createStudent();
         studentService.save(student1);
 
         Student student2 = Student.builder()
@@ -157,5 +129,16 @@ class StudentServiceTest {
         List<Student> allStudent = studentService.getAllStudent();
 
         assertEquals(2, allStudent.size());
+    }
+
+    private Student createStudent() {
+        return Student.builder()
+                .firstName("Mohsen")
+                .lastName("Mansouri")
+                .nationalCode("0000000000")
+                .address("Tehran")
+                .telephone("000")
+                .studentNumber("321")
+                .build();
     }
 }

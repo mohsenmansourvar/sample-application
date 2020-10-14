@@ -21,13 +21,7 @@ class TeacherServiceTest {
 
     @Test
     void save() {
-        Teacher teacher = Teacher.builder()
-                .firstName("Ali")
-                .lastName("Ebrahimi")
-                .nationalCode("1111111111")
-                .address("Tehran")
-                .telephone("123")
-                .build();
+        Teacher teacher = createTeacher();
         teacherService.save(teacher);
 
         Teacher teacherById = teacherService.getById(teacher.getId());
@@ -42,13 +36,7 @@ class TeacherServiceTest {
 
     @Test
     void getById() {
-        Teacher teacher = Teacher.builder()
-                .firstName("Ali")
-                .lastName("Ebrahimi")
-                .nationalCode("1111111111")
-                .address("Tehran")
-                .telephone("123")
-                .build();
+        Teacher teacher = createTeacher();
         teacherService.save(teacher);
 
         Teacher teacherById = teacherService.getById(teacher.getId());
@@ -64,13 +52,7 @@ class TeacherServiceTest {
 
     @Test
     void delete() {
-        Teacher teacher = Teacher.builder()
-                .firstName("Ali")
-                .lastName("Ebrahimi")
-                .nationalCode("1111111111")
-                .address("Tehran")
-                .telephone("123")
-                .build();
+        Teacher teacher = createTeacher();
         teacherService.save(teacher);
 
         teacherService.delete(teacher.getId());
@@ -80,13 +62,7 @@ class TeacherServiceTest {
 
     @Test
     void update() {
-        Teacher teacher = Teacher.builder()
-                .firstName("Ali")
-                .lastName("Ebrahimi")
-                .nationalCode("1111111111")
-                .address("Tehran")
-                .telephone("123")
-                .build();
+        Teacher teacher = createTeacher();
         teacherService.save(teacher);
 
         Teacher updatedTeacher = Teacher.builder()
@@ -107,13 +83,7 @@ class TeacherServiceTest {
 
     @Test
     void getAllTeachers() {
-        Teacher teacher1 = Teacher.builder()
-                .firstName("Ali")
-                .lastName("Ebrahimi")
-                .nationalCode("1111111111")
-                .address("Tehran")
-                .telephone("123")
-                .build();
+        Teacher teacher1 = createTeacher();
         teacherService.save(teacher1);
 
         Teacher teacher2 = Teacher.builder()
@@ -129,5 +99,15 @@ class TeacherServiceTest {
 
         assertNotNull(allTeachers);
         assertEquals(2, allTeachers.size());
+    }
+
+    private Teacher createTeacher() {
+        return Teacher.builder()
+                .firstName("Ali")
+                .lastName("Ebrahimi")
+                .nationalCode("1111111111")
+                .address("Tehran")
+                .telephone("123")
+                .build();
     }
 }
