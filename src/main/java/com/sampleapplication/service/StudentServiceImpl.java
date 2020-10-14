@@ -19,17 +19,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getById(long id) {
-        return studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Student by id"));
-    }
-
-    @Override
-    @Transactional
-    public void delete(long id) {
-        studentRepository.deleteById(id);
-    }
-
-    @Override
     @Transactional
     public void update(long id, Student newStudent) {
         Student student = getById(id);
@@ -53,6 +42,17 @@ public class StudentServiceImpl implements StudentService {
             student.setStudentNumber(newStudent.getStudentNumber());
         }
         studentRepository.save(newStudent);
+    }
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        studentRepository.deleteById(id);
+    }
+
+    @Override
+    public Student getById(long id) {
+        return studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Student by id"));
     }
 
     @Override

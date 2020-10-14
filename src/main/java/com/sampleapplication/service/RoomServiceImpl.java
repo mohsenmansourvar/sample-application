@@ -3,7 +3,6 @@ package com.sampleapplication.service;
 import com.sampleapplication.domain.Room;
 import com.sampleapplication.repository.RoomRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,20 +17,6 @@ public class RoomServiceImpl implements RoomService {
     @Transactional
     public void save(Room room) {
         roomRepository.save(room);
-
-    }
-
-    @Override
-    public Room getById(long id) {
-         return roomRepository.findById(id)
-                 .orElseThrow(()-> new IllegalArgumentException("no room found by id"));
-    }
-
-    @Override
-    @Transactional
-    public void delete(long id) {
-        roomRepository.deleteById(id);
-
     }
 
     @Override
@@ -39,14 +24,25 @@ public class RoomServiceImpl implements RoomService {
     public void update(long id, Room newRoom) {
         Room room = getById(id);
 
-        if (newRoom.getClassNumber() != null){
+        if (newRoom.getClassNumber() != null) {
             room.setClassNumber(newRoom.getClassNumber());
         }
-        if (newRoom.getCapacity() != 0){
+        if (newRoom.getCapacity() != 0) {
             room.setCapacity(newRoom.getCapacity());
         }
         roomRepository.save(newRoom);
+    }
 
+    @Override
+    @Transactional
+    public void delete(long id) {
+        roomRepository.deleteById(id);
+    }
+
+    @Override
+    public Room getById(long id) {
+        return roomRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("no room found by id"));
     }
 
     @Override

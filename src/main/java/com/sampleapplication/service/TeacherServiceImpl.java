@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 public class TeacherServiceImpl implements TeacherService {
@@ -17,17 +16,6 @@ public class TeacherServiceImpl implements TeacherService {
     @Transactional
     public void save(Teacher teacher) {
         teacherRepository.save(teacher);
-    }
-
-    @Override
-    public Teacher getById(long id) {
-        return teacherRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("no teacher by id"));
-    }
-
-    @Override
-    @Transactional
-    public void delete(long id) {
-        teacherRepository.deleteById(id);
     }
 
     @Override
@@ -54,6 +42,17 @@ public class TeacherServiceImpl implements TeacherService {
             teacher.setTelephone(newTeacher.getTelephone());
         }
         teacherRepository.save(newTeacher);
+    }
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        teacherRepository.deleteById(id);
+    }
+
+    @Override
+    public Teacher getById(long id) {
+        return teacherRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("no teacher by id"));
     }
 
     @Override

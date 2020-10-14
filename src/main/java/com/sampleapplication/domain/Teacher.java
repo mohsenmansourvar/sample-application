@@ -18,12 +18,19 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private String nationalCode;
+
     private String address;
+
     private String telephone;
+
     private String specialty;
+
     @OneToMany
     private List<Student> students = new ArrayList<>();
 }
