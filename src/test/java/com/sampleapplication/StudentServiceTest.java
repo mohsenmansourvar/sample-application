@@ -12,18 +12,20 @@ import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @SpringBootTest
-@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
-public class StudentServiceTest {
+@Sql(executionPhase = AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
+class StudentServiceTest {
 
     @Autowired
-    StudentService studentService;
+    private StudentService studentService;
+
     @Autowired
-    TeacherService teacherService;
+    private TeacherService teacherService;
 
     @Test
-    public void save() {
+    void save() {
 
         Teacher teacher = Teacher.builder()
                 .firstName("Reza")
@@ -61,7 +63,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void delete() {
+    void delete() {
         Student student = Student.builder()
                 .firstName("Mohsen")
                 .lastName("Mansouri")
@@ -78,7 +80,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void getById() {
+    void getById() {
         Student student = Student.builder()
                 .firstName("Mohsen")
                 .lastName("Mansouri")
@@ -101,7 +103,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void update() {
+    void update() {
         Student student = Student.builder()
                 .firstName("Mohsen")
                 .lastName("Mansouri")
@@ -131,7 +133,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void getAllStudents() {
+    void getAllStudents() {
         Student student1 = Student.builder()
                 .firstName("Mohsen")
                 .lastName("Mansouri")

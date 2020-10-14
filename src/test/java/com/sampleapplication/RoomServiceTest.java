@@ -10,15 +10,17 @@ import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @SpringBootTest
-@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
-public class RoomServiceTest {
+@Sql(executionPhase = AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
+class RoomServiceTest {
+
     @Autowired
     private RoomService roomService;
 
     @Test
-    public void save() {
+    void save() {
         Room room = Room.builder()
                 .classNumber("125")
                 .capacity(45)
@@ -32,7 +34,7 @@ public class RoomServiceTest {
     }
 
     @Test
-    public void delete() {
+    void delete() {
         Room room = Room.builder()
                 .classNumber("125")
                 .capacity(45)
@@ -45,7 +47,7 @@ public class RoomServiceTest {
     }
 
     @Test
-    public void update() {
+    void update() {
         Room room = Room.builder()
                 .classNumber("125")
                 .capacity(45)
@@ -65,7 +67,7 @@ public class RoomServiceTest {
     }
 
     @Test
-    public void getAllRooms() {
+    void getAllRooms() {
         Room room1 = Room.builder()
                 .classNumber("125")
                 .capacity(45)
