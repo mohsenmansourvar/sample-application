@@ -25,15 +25,4 @@ public class ApplicationConfiguration {
     public TeacherServiceImpl teacherService(TeacherRepository teacherRepository) {
         return new TeacherServiceImpl(teacherRepository);
     }
-
-    /*@Bean(name = "entityManagerFactory")
-    public LocalSessionFactoryBean sessionFactory(DataSource dataSource, Properties properties) {
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(dataSource);
-        localSessionFactoryBean.setPackagesToScan("com.education.domain");
-        localSessionFactoryBean.setHibernateProperties(properties);
-        return localSessionFactoryBean;
-    }*/
 }
-
-
