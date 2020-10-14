@@ -8,8 +8,8 @@
         <version>2.2.10.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sinmpleCrud</groupId>
-    <artifactId>crud</artifactId>
+    <groupId>com.sampleapplication</groupId>
+    <artifactId>sample-application</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Sample Application</name>
 
