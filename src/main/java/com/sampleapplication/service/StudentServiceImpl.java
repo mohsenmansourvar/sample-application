@@ -41,7 +41,7 @@ public class StudentServiceImpl implements StudentService {
         if (newStudent.getStudentNumber() != null) {
             student.setStudentNumber(newStudent.getStudentNumber());
         }
-        studentRepository.save(newStudent);
+        studentRepository.save(student);
     }
 
     @Override

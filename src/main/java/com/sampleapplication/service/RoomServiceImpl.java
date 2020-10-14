@@ -30,7 +30,7 @@ public class RoomServiceImpl implements RoomService {
         if (newRoom.getCapacity() != 0) {
             room.setCapacity(newRoom.getCapacity());
         }
-        roomRepository.save(newRoom);
+        roomRepository.save(room);
     }
 
     @Override

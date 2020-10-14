@@ -41,7 +41,7 @@ public class TeacherServiceImpl implements TeacherService {
         if (newTeacher.getTelephone() != null) {
             teacher.setTelephone(newTeacher.getTelephone());
         }
-        teacherRepository.save(newTeacher);
+        teacherRepository.save(teacher);
     }
 
     @Override
