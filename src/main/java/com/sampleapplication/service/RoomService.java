@@ -2,7 +2,7 @@ package com.sampleapplication.service;
 
 import com.sampleapplication.domain.Room;
 
-import java.util.List;
+import java.util.Iterator;
 
 public interface RoomService {
 
@@ -14,5 +14,5 @@ public interface RoomService {
 
     Room getById(long id);
 
-    List<Room> getAllRooms();
+    Iterable<Room> getAllRooms();
 }

@@ -5,6 +5,7 @@ import com.sampleapplication.service.RoomService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class RoomController {
     }
 
     @GetMapping(value = "/rooms")
-    public List<Room> getAllRooms() {
+    public Iterable<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 }

@@ -5,19 +5,25 @@ import com.sampleapplication.service.RoomService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @SpringBootTest
-@Sql(executionPhase = AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
+//@Sql(executionPhase = AFTER_TEST_METHOD, value = "/sql/cleanup.sql")
 class RoomServiceTest {
 
     @Autowired
     private RoomService roomService;
+
+    @Test()
+    void givenNull() {
+        List<String> names = Arrays.asList("mohsen", "mary", "liam");
+        System.out.println(names);
+    }
 
     @Test
     void save() {
@@ -68,10 +74,9 @@ class RoomServiceTest {
                 .build();
         roomService.save(room2);
 
-        List<Room> allRooms = roomService.getAllRooms();
+        Iterable<Room> allRooms = roomService.getAllRooms();
 
         assertNotNull(allRooms);
-        assertEquals(2, allRooms.size());
     }
 
     private Room createRoom() {
